@@ -1,5 +1,5 @@
-# Changelog for pandoc-throw
+# Changelog for compdoc
 
 # v0.1.0.0
 
-* Add `runPandocPureThrow` and `runPandocIOThrow`.
+* Initial data declaration and parsing functions.
