@@ -1,0 +1,29 @@
+name:                compdoc
+version:             0.1.0.0
+license:             MIT
+category:            Text
+author:              "Daniel Firth"
+maintainer:          "dan.firth@homotopic.tech"
+copyright:           "2020 Daniel Firth"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+synopsis:            Parse a Pandoc to a composite value.
+description:         Provides a functionality for transforming a Pandoc into a vinyl/composite record.
+
+dependencies:
+- aeson
+- base >= 4.7 && < 5
+- composite-aeson
+- composite-aeson-throw
+- composite-base
+- path
+- pandoc
+- pandoc-throw
+- rio
+- vinyl
+
+library:
+  source-dirs: src
