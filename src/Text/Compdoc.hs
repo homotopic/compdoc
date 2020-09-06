@@ -12,12 +12,15 @@ Provides functionality for transforming a `Pandoc` into a composite record.
 {-# LANGUAGE TemplateHaskell   #-}
 {-# LANGUAGE TypeOperators     #-}
 module Text.Compdoc (
-  readMarkdown'
+  FContent
+, fContent
+, Compdoc
+, readMarkdown'
+, readMarkdownFile
 , runPandocPureDefault
 , pandocToCompdoc
-, FContent
-, fContent
 , contentBlock
+, writeBlocksDefault
 , flattenMeta
 ) where
 
@@ -66,7 +69,9 @@ readMarkdown' ropts wopts f x = runPandocPureThrow (Text.Pandoc.Readers.readMark
 
 -- | Transform a `Pandoc` to a `Compdoc` supplying a `JsonFormat for the metadata.
 pandocToCompdoc :: (Typeable e, Show e, MonadThrow m) => (WriterOptions -> Pandoc -> PandocPure Text) -> WriterOptions -> JsonFormat e (Record a) -> Pandoc -> m (Record (Compdoc a))
-pandocToCompdoc writer wopts f (Pandoc meta xs) = flattenMeta (writer wopts) meta >>= parseValue' f >>= return . (<+> contentBlock wopts xs)
+pandocToCompdoc writer wopts f (Pandoc meta xs) = do
+  k <- flattenMeta (writer wopts) meta >>= parseValue' f
+  return $ k <+> contentBlock wopts xs
 
 -- | Create the tail of a `Compdoc` which is just an `FContent` field.
 contentBlock :: WriterOptions -> [Block] -> Record (FContent : '[])
