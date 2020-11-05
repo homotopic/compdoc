@@ -10,6 +10,7 @@ Provides functionality for transforming a `Pandoc` into a composite record.
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE TemplateHaskell   #-}
+{-# LANGUAGE TypeApplications  #-}
 {-# LANGUAGE TypeOperators     #-}
 module Text.Compdoc (
   FContent
@@ -30,7 +31,6 @@ import           Composite.Record
 import           Composite.TH
 import           Data.Aeson
 import           Data.Vinyl ((<+>))
-import           Data.Vinyl.TypeLevel
 import           Path
 import           RIO
 import           Text.Pandoc
@@ -42,7 +42,7 @@ withLensesAndProxies [d|
   |]
 
 -- | A Compdoc is a Record with at least an FContent field.
-type Compdoc a = a ++ (FContent : '[])
+type Compdoc a = FContent ': a
 
 -- | Write a list of `Block`s to `Text` using `WriterOptions` defaulting to the empty string
 -- in the case of error.
@@ -71,7 +71,7 @@ readMarkdown' ropts wopts f x = runPandocPureThrow (Text.Pandoc.Readers.readMark
 pandocToCompdoc :: (Typeable e, Show e, MonadThrow m) => (WriterOptions -> Pandoc -> PandocPure Text) -> WriterOptions -> JsonFormat e (Record a) -> Pandoc -> m (Record (Compdoc a))
 pandocToCompdoc writer wopts f (Pandoc meta xs) = do
   k <- flattenMeta (writer wopts) meta >>= parseValue' f
-  return $ k <+> contentBlock wopts xs
+  return $ contentBlock wopts xs <+> k
 
 -- | Create the tail of a `Compdoc` which is just an `FContent` field.
 contentBlock :: WriterOptions -> [Block] -> Record (FContent : '[])
