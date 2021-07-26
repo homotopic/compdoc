@@ -1,13 +1,13 @@
-resolver: nightly-2020-08-27
+resolver: nightly-2021-07-23
 packages:
 - .
 extra-deps:
-- commonmark-0.1.0.2@sha256:fbff7a2ade0ce7d699964a87f765e503a3a9e22542c05f0f02ba7aad64e38af4,3278
-- commonmark-extensions-0.2.0.1@sha256:647aa8dba5fd46984ddedc15c3693c9c4d9655503d42006576bd8f0dadf8cd39,3176
-- commonmark-pandoc-0.2.0.0@sha256:84a9f6846d4fe33e9f0dcd938ef1c83162fb4fe81cca66315249e86414aac226,1167
+- git: https://github.com/locallycompact/composite
+  commit: 5644183439960e63d06ef8ec5e85c25356c6b1fc
+  subdirs:
+  - composite-base
+  - composite-aeson
 - composite-aeson-throw-0.1.0.0
-- pandoc-2.10.1
-- pandoc-throw-0.1.0.0
 allow-newer: true
 nix:
   packages: [zlib]
