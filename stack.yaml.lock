@@ -5,31 +5,19 @@
 
 packages:
 - completed:
-    subdir: composite-base
-    name: composite-base
-    version: 0.7.5.0
-    git: https://github.com/locallycompact/composite
+    hackage: composite-base-0.7.5.0@sha256:3c754bca3a1a673e1f0ba9fa88850dd8c650b5a7140dc5afca09bb86e4843c17,2955
     pantry-tree:
-      size: 708
-      sha256: 8a544421edc54347fc80c43af4e3c5f238f610ef23c0d16852ca4ba9d59d3103
-    commit: 5644183439960e63d06ef8ec5e85c25356c6b1fc
+      size: 604
+      sha256: 504ed3870d3ee32a008f24ac6e1cc5686c201900008499c294fb1b7cdcef9648
   original:
-    subdir: composite-base
-    git: https://github.com/locallycompact/composite
-    commit: 5644183439960e63d06ef8ec5e85c25356c6b1fc
+    hackage: composite-base-0.7.5.0
 - completed:
-    subdir: composite-aeson
-    name: composite-aeson
-    version: 0.7.5.0
-    git: https://github.com/locallycompact/composite
+    hackage: composite-aeson-0.7.5.0@sha256:a6c7ab2e95ea9d83b4f140acb26b422301407f438ee158b54bbbb372277d76d4,3788
     pantry-tree:
-      size: 1507
-      sha256: 62eec088c8fa3726fd2fb326c8847329a8146fcccd07dc8df12584e00bcc0edd
-    commit: 5644183439960e63d06ef8ec5e85c25356c6b1fc
+      size: 1402
+      sha256: f42256aac469a321b41334630c27639595ca92608f12ba23d545d6370713ecb6
   original:
-    subdir: composite-aeson
-    git: https://github.com/locallycompact/composite
-    commit: 5644183439960e63d06ef8ec5e85c25356c6b1fc
+    hackage: composite-aeson-0.7.5.0
 - completed:
     hackage: composite-aeson-throw-0.1.0.0@sha256:0fc5f4ea1b243b0cf3b28168e3e7e67706bf03d1c1e7998c5816f1f58c0665fe,842
     pantry-tree:
@@ -39,7 +27,7 @@ packages:
     hackage: composite-aeson-throw-0.1.0.0
 snapshots:
 - completed:
-    size: 567260
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2021/7/23.yaml
-    sha256: 94c5e73c2221ce53348504de8916c960a78a97bdc6ff0921200a42773694bd7c
-  original: nightly-2021-07-23
+    size: 585392
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/2.yaml
+    sha256: 7abb45c0cc5eb349448b66d8753655542d45d387ad26970419282eab3d860724
+  original: lts-18.2
